@@ -1,7 +1,7 @@
-const expect = require('expect') 
+const expect = require('expect')
 const fs = require('fs')
 const jsdom = require('mocha-jsdom')
-const path = require('path') 
+const path = require('path')
 
 describe('index', () => {
   jsdom({
@@ -9,6 +9,6 @@ describe('index', () => {
   })
 
   it('runs', () => {
-    expect(true).toEqual(true)
+    expect(true).toEqual(2 == 2)
   })
 })
