@@ -1,11 +1,75 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Building a client-side application in JavaScript</title>
-  </head>
-  <body>
-    <main id="main">
-    </main>
-    <script src="index.js"></script>
-  </body>
+<html lang="en">
+
+<head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+
+<style>
+.center{
+    text-align: center;
+}
+
+</style>
+</head>
+<div class="row">
+    <div class="container">
+        <div class="input-daterange input-group" id="datepicker">
+            <input id="dt1" class="input-sm form-control" type="date" name="start" value="2010-05-01">
+            <button class="btn btn-success" onclick="loadData();">Get Data</button>
+            <input id="dt2" class="input-sm form-control" type="date" name="end" type="text" value="2010-06-01" disabled>
+             <span class="input-group-addon">Number of Days:<input type="text" id="days" maxlength="3" disabled></input></span>
+        </div>Zip Code:
+        <input id="zip" type="text" class=" input-md" placeholder="80401" value="80401">
+         Data Type:<div class="btn-group" id="choice"></div>
+        <div id="chosen"></div>
+
+    </div>
+</div>
+
+<div class="row">
+</div>
+<main id="main">
+</main>
+
+<script id="header-template" type="text/x-handlebars-template">
+  <table>
+    <thead><th>Station ID: {{station}}</th></thead>
+  <tbody>
+</script>
+
+<script id="weather-template" type="text/x-handlebars-template">
+    <table class="table">
+    <th>Date</th><th> Data</th>
+
+        {{#each this}}
+        <tr>
+            <td class='center'>{{date}} </td>
+            <td class='center'>{{datatype}}: {{value}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+
+<script id="footer-template" type="text/x-handlebars-template">
+    </tbody>
+    </table>
+</script>
+
+<script id="weather-choices" type="text/x-handlebars-template">
+    <select id="dataChooser" class="form-control">
+    <ul class="dropdown-menu">
+    {{#each this}}
+        <option value="{{id}}" title="{{name}} from {{mindate}} to {{maxdate}}">{{id}} </option>
+    {{/each}}
+    </ul>
+    </select>
+</script>
+
+<div id="result"></div>
+<script src="helpers.js"></script>
+<script src="NOAA.js"></script>
 </html>
